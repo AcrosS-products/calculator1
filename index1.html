@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Responsive Calculator</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <details>
+        <summary style="margin-left : 0px ; color: blue; font-size: 50px;" >
+            Calculator (click on me) 
+        </summary>
+        <p>
+            <div class="calculator" >
+                <input type="text" id="display" class="calculator-display" aria-label="Calculator display" readonly>
+                <div class="calculator-buttons" role="group" aria-label="Calculator buttons">
+                  <button class="button1" aria-label="Clear" onclick="clearDisplay()">C</button>
+                  <button class="button1" aria-label="Divide" onclick="appendToDisplay('/')">/</button>
+                  <button class="button1" aria-label="Multiply" onclick="appendToDisplay('*')">*</button>
+                  <button class="button1" aria-label="Subtract" onclick="appendToDisplay('-')">-</button>
+                  <button class="button" aria-label="7" onclick="appendToDisplay('7')">7</button>
+                  <button class="button" aria-label="8" onclick="appendToDisplay('8')">8</button>
+                  <button class="button" aria-label="9" onclick="appendToDisplay('9')">9</button>
+                  <button class="button1" aria-label="Add" onclick="appendToDisplay('+')">+</button>
+                  <button class="button" aria-label="4" onclick="appendToDisplay('4')">4</button>
+                  <button class="button" aria-label="5" onclick="appendToDisplay('5')">5</button>
+                  <button class="button" aria-label="6" onclick="appendToDisplay('6')">6</button>
+                  <button class="button1" aria-label="Decimal point" onclick="appendToDisplay('.')">.</button>
+                  <button class="button" aria-label="2" onclick="appendToDisplay('2')">2</button>
+                  <button class="button" aria-label="3" onclick="appendToDisplay('3')">3</button>
+                  <button class="button" aria-label="1" onclick="appendToDisplay('1')">1</button>
+                  <button class="button" aria-label="0" onclick="appendToDisplay('0')">0</button>
+                  <button class="button button-equal" aria-label="Equal" onclick="calculateResult()">=</button>
+                </div>
+              </div>
+        </p>
+    </details>
+
+  
+
+</body>
+</html>
