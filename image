@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Image Gallery</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background-color: var(--background-light);
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: var(--spacing-md);
+            background-color: var(--background-dark);
+            color: white;
+        }
+
+        nav {
+            position: sticky;
+            top: 0;
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: var(--spacing-md);
+            z-index: 100;
+            display: flex;
+            justify-content: center;
+        }
+
+        nav a {
+            margin: 0 var(--spacing-md);
+            text-decoration: none;
+            color: var(--primary-color);
+            font-weight: bold;
+        }            
+        .masked-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, 
+                       transparent 0%, 
+                       rgba(0, 0, 0, 0.7) 100%);
+            z-index: 1;
+        }
+
+        .masked-image h3 {
+            position: absolute;
+            bottom: var(--spacing-md);
+            left: var(--spacing-md);
+            color: white;
+            z-index: 2;
+        }
+
+        .sticky-container {
+            height: 400px;
+            overflow: auto;
+            border: 1px solid #ddd;
+            border-radius: var(--border-radius);
+            margin: var(--spacing-lg) 0;
+        }
+
+        .sticky-image {
+            position: sticky;
+            top: 0;
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .scrollable-content {
+            padding: var(--spacing-md);
+            background-color: white;
+        }
+
+        .special-layout {
+            display: grid;
+            grid-template-columns: 1fr calc(100% / 3) 1fr;
+            gap: calc(var(--spacing-md) * 2);
+            margin: var(--spacing-lg) 0;
+        }
+
+        .special-layout > div {
+            height: 200px;
+            background-color: var(--primary-color);
+            border-radius: var(--border-radius);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+        }
+
+        footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: var(--spacing-lg);
+            padding: var(--spacing-md);
+            background-color: var(--background-dark);
+            color: white;
+            border-radius: var(--border-radius);
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Advanced Image Gallery</h1>
+        <p>Featuring CSS variables, responsive grid, filters, and more</p>
+    </header>
+
+    <nav>
+        <a href="#grid">Grid</a>
+        <a href="#filters">Filters</a>
+        <a href="#shapes">Shapes</a>
+        <a href="#masking">Masking</a>
+        <a href="#sticky">Sticky</a>
+        <a href="#math">Math Layout</a>
+    </nav>
+
+    <main>
+        <section id="grid">
+            <h2>Responsive Image Grid</h2>
+            <div class="image-grid">
+                <div class="image-card grayscale">
+                    <img src="https://www.alexbirkett.com/wp-content/uploads/2022/11/iamalexbirkett_jacked_aliens_wandering_through_lord_of_the_ring_0bee4dd7-c4a1-4f73-9b1b-f407f052054f.png" alt="Placeholder image 1">
+                </div>
+                <div class="image-card invert">
+                    <img src="https://www.alexbirkett.com/wp-content/uploads/2022/11/iamalexbirkett_jacked_aliens_wandering_through_lord_of_the_ring_0bee4dd7-c4a1-4f73-9b1b-f407f052054f.png" alt="Placeholder image 6">
+                </div>
+            </div>
+        </section>
+
+        <section id="shapes">
+            <h2>Image Shapes</h2>
+            <div class="image-grid">
+                <div class="image-card circle">
+                    <img src="https://images.rawpixel.com/image_800/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIyLTA1L3Vwd2s2MTcyNzgwOS13aWtpbWVkaWEtaW1hZ2Uta293YmVxYTQuanBn.jpg" alt="Circle image">
+                </div>
+                <div class="image-card rounded">
+                    <img src="https://images.rawpixel.com/image_800/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIyLTA1L3Vwd2s2MTcyNzgwOS13aWtpbWVkaWEtaW1hZ2Uta293YmVxYTQuanBn.jpg" alt="Rounded image">
+                </div>
+                <div class="image-card clipped-pentagon">
+                    <img src="/api/placeholder/400/400" alt="Pentagon image">
+                </div>
+                <div class="image-card diamond">
+                    <img src="/api/placeholder/400/400" alt="Diamond image">
+                </div>
+            </div>
+        </section>
+
+        <section id="masking">
+            <h2>Image Masking</h2>
+            <div class="image-grid">
+                <div class="image-card masked-image">
+                    <img src="https://www.alexbirkett.com/wp-content/uploads/2022/11/iamalexbirkett_jacked_aliens_wandering_through_lord_of_the_ring_0bee4dd7-c4a1-4f73-9b1b-f407f052054f.png" alt="Masked image 1">
+                    <h3>Beautiful Landscape</h3>
+                </div>
+                <div class="image-card masked-image">
+                    <img src="/api/placeholder/400/300" alt="Masked image 2">
+                    <h3>Urban Adventure</h3>
+                </div>
+                <div class="image-card masked-image">
+                    <img src="/api/placeholder/400/300" alt="Masked image 3">
+                    <h3>Mountain Escape</h3>
+                </div>
+            </div>
+        </section>
+
+        <section id="sticky">
+            <h2>Sticky Image Effect</h2>
+            <div class="sticky-container">
+                <img src="https://th.bing.com/th/id/OIP.4XB8NF1awQyApnQDDmBmQwHaEo?w=279&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7" alt="Sticky header image" class="sticky-image">
+                <div class="scrollable-content">
+                    <h3>Scrollable Content with Sticky Image</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam euismod, nisi vel porta ultricies, nisi erat convallis eros, eget efficitur enim metus non dui. Sed eget ligula eu libero mollis tincidunt. Duis vestibulum, risus at egestas imperdiet, urna est dignissim nisi, sed cursus massa tortor in est.</p>
+                    <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Maecenas semper mauris vitae eros tristique, in tristique nisl faucibus. Donec elementum risus quis leo ultrices, et ultrices nulla eleifend.</p>
+                    <p>Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Praesent luctus magna ut nisi viverra, eu consequat neque tincidunt. Sed id est vel mi sollicitudin rhoncus. Praesent aliquet, felis eu facilisis condimentum, odio nulla finibus velit, eu fringilla risus mi in magna.</p>
+                    <p>Cras eget metus ac enim interdum dapibus. Vestibulum consequat quam non nisi venenatis, vel malesuada turpis fermentum. Aliquam erat volutpat. Nulla facilisi. Nullam gravida nisi vel tortor iaculis, in efficitur turpis placerat.</p>
+                    <p>Aenean ultrices, justo ac bibendum auctor, purus velit cursus sapien, ac ultricies ex justo et enim. Maecenas fermentum purus ut mi pellentesque, ac aliquam purus volutpat. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Sed eu urna ut magna vulputate gravida.</p>
+                </div>
+            </div>
+        </section>
+
+        
+    </main>
+
+    <footer>
+        <p>Created with advanced CSS techniques</p>
+        <p>Layout uses flexbox, grid, and custom properties</p>
+    </footer>
+</body>
+</html>
